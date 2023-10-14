@@ -1,1 +1,3258 @@
-
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "OpenAPI definition",
+        "version": "v0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080",
+            "description": "Generated server url"
+        }
+    ],
+    "paths": {
+        "/kegiatans": {
+            "get": {
+                "tags": [
+                    "kegiatan-entity-controller"
+                ],
+                "description": "get-kegiatan",
+                "operationId": "getCollectionResource-kegiatan-get_1",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Zero-based page index (0..N)",
+                        "required": false,
+                        "schema": {
+                            "minimum": 0,
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "The size of the page to be returned",
+                        "required": false,
+                        "schema": {
+                            "minimum": 1,
+                            "type": "integer",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PagedModelEntityModelKegiatan"
+                                }
+                            },
+                            "application/x-spring-data-compact+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PagedModelEntityModelKegiatan"
+                                }
+                            },
+                            "text/uri-list": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "kegiatan-entity-controller"
+                ],
+                "description": "create-kegiatan",
+                "operationId": "postCollectionResource-kegiatan-post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/KegiatanRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelKegiatan"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/kegiatans/search/findByNamaKegiatanContaining": {
+            "get": {
+                "tags": [
+                    "kegiatan-search-controller"
+                ],
+                "operationId": "executeSearch-kegiatan-get",
+                "parameters": [
+                    {
+                        "name": "namaKegiatan",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CollectionModelEntityModelKegiatan"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/kegiatans/{id}": {
+            "get": {
+                "tags": [
+                    "kegiatan-entity-controller"
+                ],
+                "description": "get-kegiatan",
+                "operationId": "getItemResource-kegiatan-get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelKegiatan"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "kegiatan-entity-controller"
+                ],
+                "description": "update-kegiatan",
+                "operationId": "putItemResource-kegiatan-put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/KegiatanRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelKegiatan"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelKegiatan"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "kegiatan-entity-controller"
+                ],
+                "description": "delete-kegiatan",
+                "operationId": "deleteItemResource-kegiatan-delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "kegiatan-entity-controller"
+                ],
+                "description": "patch-kegiatan",
+                "operationId": "patchItemResource-kegiatan-patch",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/KegiatanRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelKegiatan"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            }
+        },
+        "/kegiatans/{id}/ukm": {
+            "get": {
+                "tags": [
+                    "kegiatan-property-reference-controller"
+                ],
+                "description": "get-ukm-by-kegiatan-Id",
+                "operationId": "followPropertyReference-kegiatan-get_1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelUkm"
+                                }
+                            },
+                            "text/uri-list": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "kegiatan-property-reference-controller"
+                ],
+                "description": "update-ukm-by-kegiatan-Id",
+                "operationId": "createPropertyReference-kegiatan-put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CollectionModelObject"
+                            }
+                        },
+                        "application/x-spring-data-compact+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CollectionModelObject"
+                            }
+                        },
+                        "text/uri-list": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelUkm"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelUkm"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "kegiatan-property-reference-controller"
+                ],
+                "description": "delete-ukm-by-kegiatan-Id",
+                "operationId": "deletePropertyReference-kegiatan-delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "kegiatan-property-reference-controller"
+                ],
+                "description": "patch-ukm-by-kegiatan-Id",
+                "operationId": "createPropertyReference-kegiatan-patch",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CollectionModelObject"
+                            }
+                        },
+                        "application/x-spring-data-compact+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CollectionModelObject"
+                            }
+                        },
+                        "text/uri-list": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelUkm"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            }
+        },
+        "/kegiatans/{id}/ukm/{propertyId}": {
+            "get": {
+                "tags": [
+                    "kegiatan-property-reference-controller"
+                ],
+                "description": "get-ukm-by-kegiatan-Id",
+                "operationId": "followPropertyReference-kegiatan-get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "propertyId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelUkm"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "kegiatan-property-reference-controller"
+                ],
+                "description": "delete-ukm-by-kegiatan-Id",
+                "operationId": "deletePropertyReferenceId-kegiatan-delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "propertyId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/profile": {
+            "get": {
+                "tags": [
+                    "profile-controller"
+                ],
+                "operationId": "listAllFormsOfMetadata_1_1",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "$ref": "#/components/schemas/UserDto"
+                                        },
+                                        {
+                                            "$ref": "#/components/schemas/RepresentationModelObject"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/profile/kegiatans": {
+            "get": {
+                "tags": [
+                    "profile-controller"
+                ],
+                "operationId": "descriptor_1_1_1",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "application/alps+json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "application/schema+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/JsonSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/profile/roles": {
+            "get": {
+                "tags": [
+                    "profile-controller"
+                ],
+                "operationId": "descriptor_1_1_2",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "application/alps+json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "application/schema+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/JsonSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/profile/ukm": {
+            "get": {
+                "tags": [
+                    "profile-controller"
+                ],
+                "operationId": "descriptor_1_1_3",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "application/alps+json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "application/schema+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/JsonSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/profile/users": {
+            "get": {
+                "tags": [
+                    "profile-controller"
+                ],
+                "operationId": "descriptor_1_1_4",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "*/*": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "application/alps+json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            },
+                            "application/schema+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/JsonSchema"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/roles": {
+            "get": {
+                "tags": [
+                    "role-entity-controller"
+                ],
+                "description": "get-role",
+                "operationId": "getCollectionResource-role-get_1",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Zero-based page index (0..N)",
+                        "required": false,
+                        "schema": {
+                            "minimum": 0,
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "The size of the page to be returned",
+                        "required": false,
+                        "schema": {
+                            "minimum": 1,
+                            "type": "integer",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PagedModelEntityModelRole"
+                                }
+                            },
+                            "application/x-spring-data-compact+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PagedModelEntityModelRole"
+                                }
+                            },
+                            "text/uri-list": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "role-entity-controller"
+                ],
+                "description": "create-role",
+                "operationId": "postCollectionResource-role-post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RoleRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelRole"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/roles/search/findByName": {
+            "get": {
+                "tags": [
+                    "role-search-controller"
+                ],
+                "operationId": "executeSearch-role-get",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "ROLE_USER",
+                                "ROLE_ADMIN"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelRole"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/roles/{id}": {
+            "get": {
+                "tags": [
+                    "role-entity-controller"
+                ],
+                "description": "get-role",
+                "operationId": "getItemResource-role-get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelRole"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "role-entity-controller"
+                ],
+                "description": "update-role",
+                "operationId": "putItemResource-role-put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RoleRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelRole"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelRole"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "role-entity-controller"
+                ],
+                "description": "delete-role",
+                "operationId": "deleteItemResource-role-delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "role-entity-controller"
+                ],
+                "description": "patch-role",
+                "operationId": "patchItemResource-role-patch",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RoleRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelRole"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            }
+        },
+        "/ukm": {
+            "get": {
+                "tags": [
+                    "ukm-entity-controller"
+                ],
+                "description": "get-ukm",
+                "operationId": "getCollectionResource-ukm-get_1",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Zero-based page index (0..N)",
+                        "required": false,
+                        "schema": {
+                            "minimum": 0,
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "The size of the page to be returned",
+                        "required": false,
+                        "schema": {
+                            "minimum": 1,
+                            "type": "integer",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PagedModelEntityModelUkm"
+                                }
+                            },
+                            "application/x-spring-data-compact+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PagedModelEntityModelUkm"
+                                }
+                            },
+                            "text/uri-list": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "ukm-entity-controller"
+                ],
+                "description": "create-ukm",
+                "operationId": "postCollectionResource-ukm-post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UkmRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelUkm"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/ukm/search/findByNamaUkm": {
+            "get": {
+                "tags": [
+                    "ukm-search-controller"
+                ],
+                "operationId": "executeSearch-ukm-get",
+                "parameters": [
+                    {
+                        "name": "namaUkm",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CollectionModelEntityModelUkm"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/ukm/search/findByUkmID": {
+            "get": {
+                "tags": [
+                    "ukm-search-controller"
+                ],
+                "operationId": "executeSearch-ukm-get_1",
+                "parameters": [
+                    {
+                        "name": "ukm_id",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelUkm"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/ukm/search/findByUkmIDCustom": {
+            "get": {
+                "tags": [
+                    "ukm-search-controller"
+                ],
+                "operationId": "executeSearch-ukm-get_2",
+                "parameters": [
+                    {
+                        "name": "ukm_id",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelUkm"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/ukm/{id}": {
+            "get": {
+                "tags": [
+                    "ukm-entity-controller"
+                ],
+                "description": "get-ukm",
+                "operationId": "getItemResource-ukm-get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelUkm"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "ukm-entity-controller"
+                ],
+                "description": "update-ukm",
+                "operationId": "putItemResource-ukm-put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UkmRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelUkm"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelUkm"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "ukm-entity-controller"
+                ],
+                "description": "delete-ukm",
+                "operationId": "deleteItemResource-ukm-delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "ukm-entity-controller"
+                ],
+                "description": "patch-ukm",
+                "operationId": "patchItemResource-ukm-patch",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UkmRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelUkm"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            }
+        },
+        "/ukm/{id}/kegiatans": {
+            "get": {
+                "tags": [
+                    "ukm-property-reference-controller"
+                ],
+                "description": "get-kegiatan-by-ukm-Id",
+                "operationId": "followPropertyReference-ukm-get_1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CollectionModelKegiatan"
+                                }
+                            },
+                            "text/uri-list": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "ukm-property-reference-controller"
+                ],
+                "description": "update-kegiatan-by-ukm-Id",
+                "operationId": "createPropertyReference-ukm-put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CollectionModelObject"
+                            }
+                        },
+                        "application/x-spring-data-compact+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CollectionModelObject"
+                            }
+                        },
+                        "text/uri-list": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CollectionModelKegiatan"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CollectionModelKegiatan"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "ukm-property-reference-controller"
+                ],
+                "description": "delete-kegiatan-by-ukm-Id",
+                "operationId": "deletePropertyReference-ukm-delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "ukm-property-reference-controller"
+                ],
+                "description": "patch-kegiatan-by-ukm-Id",
+                "operationId": "createPropertyReference-ukm-patch",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CollectionModelObject"
+                            }
+                        },
+                        "application/x-spring-data-compact+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CollectionModelObject"
+                            }
+                        },
+                        "text/uri-list": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CollectionModelKegiatan"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            }
+        },
+        "/ukm/{id}/kegiatans/{propertyId}": {
+            "get": {
+                "tags": [
+                    "ukm-property-reference-controller"
+                ],
+                "description": "get-kegiatan-by-ukm-Id",
+                "operationId": "followPropertyReference-ukm-get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "propertyId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CollectionModelKegiatan"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "ukm-property-reference-controller"
+                ],
+                "description": "delete-kegiatan-by-ukm-Id",
+                "operationId": "deletePropertyReferenceId-ukm-delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "propertyId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "user-entity-controller"
+                ],
+                "description": "get-user",
+                "operationId": "getCollectionResource-user-get_1",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Zero-based page index (0..N)",
+                        "required": false,
+                        "schema": {
+                            "minimum": 0,
+                            "type": "integer",
+                            "default": 0
+                        }
+                    },
+                    {
+                        "name": "size",
+                        "in": "query",
+                        "description": "The size of the page to be returned",
+                        "required": false,
+                        "schema": {
+                            "minimum": 1,
+                            "type": "integer",
+                            "default": 20
+                        }
+                    },
+                    {
+                        "name": "sort",
+                        "in": "query",
+                        "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+                        "required": false,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PagedModelEntityModelUser"
+                                }
+                            },
+                            "application/x-spring-data-compact+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PagedModelEntityModelUser"
+                                }
+                            },
+                            "text/uri-list": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "user-entity-controller"
+                ],
+                "description": "create-user",
+                "operationId": "postCollectionResource-user-post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelUser"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/search/existsByEmail": {
+            "get": {
+                "tags": [
+                    "user-search-controller"
+                ],
+                "operationId": "executeSearch-user-get",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "type": "boolean"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/users/search/findByEmail": {
+            "get": {
+                "tags": [
+                    "user-search-controller"
+                ],
+                "operationId": "executeSearch-user-get_1",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelUser"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "get": {
+                "tags": [
+                    "user-entity-controller"
+                ],
+                "description": "get-user",
+                "operationId": "getItemResource-user-get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelUser"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "user-entity-controller"
+                ],
+                "description": "update-user",
+                "operationId": "putItemResource-user-put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelUser"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelUser"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "user-entity-controller"
+                ],
+                "description": "delete-user",
+                "operationId": "deleteItemResource-user-delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "user-entity-controller"
+                ],
+                "description": "patch-user",
+                "operationId": "patchItemResource-user-patch",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserRequestBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/EntityModelUser"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            }
+        },
+        "/users/{id}/roles": {
+            "get": {
+                "tags": [
+                    "user-property-reference-controller"
+                ],
+                "description": "get-role-by-user-Id",
+                "operationId": "followPropertyReference-user-get_1",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CollectionModelRole"
+                                }
+                            },
+                            "text/uri-list": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "user-property-reference-controller"
+                ],
+                "description": "update-role-by-user-Id",
+                "operationId": "createPropertyReference-user-put",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CollectionModelObject"
+                            }
+                        },
+                        "application/x-spring-data-compact+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CollectionModelObject"
+                            }
+                        },
+                        "text/uri-list": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CollectionModelRole"
+                                }
+                            }
+                        }
+                    },
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CollectionModelRole"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "user-property-reference-controller"
+                ],
+                "description": "delete-role-by-user-Id",
+                "operationId": "deletePropertyReference-user-delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "user-property-reference-controller"
+                ],
+                "description": "patch-role-by-user-Id",
+                "operationId": "createPropertyReference-user-patch",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CollectionModelObject"
+                            }
+                        },
+                        "application/x-spring-data-compact+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CollectionModelObject"
+                            }
+                        },
+                        "text/uri-list": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CollectionModelRole"
+                                }
+                            }
+                        }
+                    },
+                    "204": {
+                        "description": "No Content"
+                    }
+                }
+            }
+        },
+        "/users/{id}/roles/{propertyId}": {
+            "get": {
+                "tags": [
+                    "user-property-reference-controller"
+                ],
+                "description": "get-role-by-user-Id",
+                "operationId": "followPropertyReference-user-get",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "propertyId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CollectionModelRole"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "user-property-reference-controller"
+                ],
+                "description": "delete-role-by-user-Id",
+                "operationId": "deletePropertyReferenceId-user-delete",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "propertyId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "404": {
+                        "description": "Not Found"
+                    }
+                }
+            }
+        },
+        "/profile/{userId}": {
+            "put": {
+                "tags": [
+                    "auth-controller"
+                ],
+                "operationId": "updateUserProfile",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserDto"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "auth-controller"
+                ],
+                "operationId": "deleteUserProfile",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/register": {
+            "post": {
+                "tags": [
+                    "auth-controller"
+                ],
+                "summary": "register new user",
+                "operationId": "register",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserDto"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "201": {
+                        "description": "User registered",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/penilaian/create": {
+            "post": {
+                "tags": [
+                    "penilaian-controller"
+                ],
+                "operationId": "createPenilaian",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PenilaianRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+                "tags": [
+                    "auth-controller"
+                ],
+                "operationId": "login",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AuthRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/kegiatan/": {
+            "get": {
+                "tags": [
+                    "kegiatan-controller"
+                ],
+                "operationId": "getAllKegiatan",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/KegiatanDto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "kegiatan-controller"
+                ],
+                "operationId": "createKegiatan",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/KegiatanDto"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/KegiatanDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/change-password/{userId}": {
+            "post": {
+                "tags": [
+                    "auth-controller"
+                ],
+                "operationId": "changePassword",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PasswordChangeRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/kegiatan/{kegiatanId}": {
+            "get": {
+                "tags": [
+                    "kegiatan-controller"
+                ],
+                "operationId": "getKegiatanById",
+                "parameters": [
+                    {
+                        "name": "kegiatanId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/KegiatanDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "kegiatan-controller"
+                ],
+                "operationId": "deleteKegiatan",
+                "parameters": [
+                    {
+                        "name": "kegiatanId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "kegiatan-controller"
+                ],
+                "operationId": "updateKegiatan",
+                "parameters": [
+                    {
+                        "name": "kegiatanId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/KegiatanDto"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/KegiatanDto"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/penilaian/cek": {
+            "get": {
+                "tags": [
+                    "penilaian-controller"
+                ],
+                "operationId": "cekPenilaian",
+                "parameters": [
+                    {
+                        "name": "request",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/components/schemas/CekKegiatanRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/kegiatan/search": {
+            "get": {
+                "tags": [
+                    "kegiatan-controller"
+                ],
+                "operationId": "searchAllKegiatan",
+                "parameters": [
+                    {
+                        "name": "keyword",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/hal+json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/KegiatanDto"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AbstractJsonSchemaPropertyObject": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "readOnly": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "Item": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string"
+                    },
+                    "properties": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/AbstractJsonSchemaPropertyObject"
+                        }
+                    },
+                    "requiredProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "JsonSchema": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "properties": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/AbstractJsonSchemaPropertyObject"
+                        }
+                    },
+                    "requiredProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "definitions": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/Item"
+                        }
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "$schema": {
+                        "type": "string"
+                    }
+                }
+            },
+            "Links": {
+                "type": "object",
+                "additionalProperties": {
+                    "$ref": "#/components/schemas/Link"
+                }
+            },
+            "RepresentationModelObject": {
+                "type": "object",
+                "properties": {
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    }
+                }
+            },
+            "EntityModelUkm": {
+                "type": "object",
+                "properties": {
+                    "ukmID": {
+                        "type": "string"
+                    },
+                    "namaUkm": {
+                        "type": "string"
+                    },
+                    "nilai": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    }
+                }
+            },
+            "PageMetadata": {
+                "type": "object",
+                "properties": {
+                    "size": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "totalElements": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "totalPages": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "number": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "PagedModelEntityModelUkm": {
+                "type": "object",
+                "properties": {
+                    "_embedded": {
+                        "type": "object",
+                        "properties": {
+                            "ukm": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/EntityModelUkm"
+                                }
+                            }
+                        }
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    },
+                    "page": {
+                        "$ref": "#/components/schemas/PageMetadata"
+                    }
+                }
+            },
+            "CollectionModelKegiatan": {
+                "type": "object",
+                "properties": {
+                    "_embedded": {
+                        "type": "object",
+                        "properties": {
+                            "kegiatans": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/KegiatanResponse"
+                                }
+                            }
+                        }
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    }
+                }
+            },
+            "CollectionModelObject": {
+                "type": "object",
+                "properties": {
+                    "_embedded": {
+                        "type": "object",
+                        "properties": {
+                            "objects": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    }
+                }
+            },
+            "CollectionModelEntityModelUkm": {
+                "type": "object",
+                "properties": {
+                    "_embedded": {
+                        "type": "object",
+                        "properties": {
+                            "ukm": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/EntityModelUkm"
+                                }
+                            }
+                        }
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    }
+                }
+            },
+            "EntityModelKegiatan": {
+                "type": "object",
+                "properties": {
+                    "namaKegiatan": {
+                        "type": "string"
+                    },
+                    "penilaianBiaya": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "penilaianKuantitas": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "penilaianWaktu": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "nilaiTotal": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "RATED",
+                            "UNRATED"
+                        ]
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    }
+                }
+            },
+            "PagedModelEntityModelKegiatan": {
+                "type": "object",
+                "properties": {
+                    "_embedded": {
+                        "type": "object",
+                        "properties": {
+                            "kegiatans": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/EntityModelKegiatan"
+                                }
+                            }
+                        }
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    },
+                    "page": {
+                        "$ref": "#/components/schemas/PageMetadata"
+                    }
+                }
+            },
+            "CollectionModelEntityModelKegiatan": {
+                "type": "object",
+                "properties": {
+                    "_embedded": {
+                        "type": "object",
+                        "properties": {
+                            "kegiatans": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/EntityModelKegiatan"
+                                }
+                            }
+                        }
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    }
+                }
+            },
+            "EntityModelUser": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    }
+                }
+            },
+            "PagedModelEntityModelUser": {
+                "type": "object",
+                "properties": {
+                    "_embedded": {
+                        "type": "object",
+                        "properties": {
+                            "users": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/EntityModelUser"
+                                }
+                            }
+                        }
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    },
+                    "page": {
+                        "$ref": "#/components/schemas/PageMetadata"
+                    }
+                }
+            },
+            "CollectionModelRole": {
+                "type": "object",
+                "properties": {
+                    "_embedded": {
+                        "type": "object",
+                        "properties": {
+                            "roles": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/RoleResponse"
+                                }
+                            }
+                        }
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    }
+                }
+            },
+            "EntityModelRole": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "enum": [
+                            "ROLE_USER",
+                            "ROLE_ADMIN"
+                        ]
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    }
+                }
+            },
+            "PagedModelEntityModelRole": {
+                "type": "object",
+                "properties": {
+                    "_embedded": {
+                        "type": "object",
+                        "properties": {
+                            "roles": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/EntityModelRole"
+                                }
+                            }
+                        }
+                    },
+                    "_links": {
+                        "$ref": "#/components/schemas/Links"
+                    },
+                    "page": {
+                        "$ref": "#/components/schemas/PageMetadata"
+                    }
+                }
+            },
+            "KegiatanRequestBody": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "namaKegiatan": {
+                        "type": "string"
+                    },
+                    "penilaianBiaya": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "penilaianKuantitas": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "penilaianWaktu": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "nilaiTotal": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "RATED",
+                            "UNRATED"
+                        ]
+                    },
+                    "ukm": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UkmRequestBody": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "ukmID": {
+                        "type": "string"
+                    },
+                    "namaUkm": {
+                        "type": "string"
+                    },
+                    "nilai": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "kegiatans": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "RoleRequestBody": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "name": {
+                        "type": "string",
+                        "enum": [
+                            "ROLE_USER",
+                            "ROLE_ADMIN"
+                        ]
+                    }
+                }
+            },
+            "KegiatanResponse": {
+                "type": "object",
+                "properties": {
+                    "namaKegiatan": {
+                        "type": "string"
+                    },
+                    "penilaianBiaya": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "penilaianKuantitas": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "penilaianWaktu": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "nilaiTotal": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "RATED",
+                            "UNRATED"
+                        ]
+                    }
+                }
+            },
+            "UserRequestBody": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "roles": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "RoleResponse": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "enum": [
+                            "ROLE_USER",
+                            "ROLE_ADMIN"
+                        ]
+                    }
+                }
+            },
+            "GrantedAuthority": {
+                "type": "object",
+                "properties": {
+                    "authority": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UserDto": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "authorities": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/GrantedAuthority"
+                        }
+                    },
+                    "enabled": {
+                        "type": "boolean"
+                    },
+                    "username": {
+                        "type": "string"
+                    },
+                    "credentialsNonExpired": {
+                        "type": "boolean"
+                    },
+                    "accountNonExpired": {
+                        "type": "boolean"
+                    },
+                    "accountNonLocked": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "PenilaianRequest": {
+                "required": [
+                    "idKegiatan",
+                    "nilaiTotal",
+                    "penilaianBiaya",
+                    "penilaianKuantitas",
+                    "penilaianWaktu"
+                ],
+                "type": "object",
+                "properties": {
+                    "idKegiatan": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "penilaianBiaya": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "penilaianKuantitas": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "penilaianWaktu": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "nilaiTotal": {
+                        "type": "number",
+                        "format": "double"
+                    }
+                }
+            },
+            "AuthRequest": {
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "type": "object",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                }
+            },
+            "KegiatanDto": {
+                "required": [
+                    "namaKegiatan"
+                ],
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "namaKegiatan": {
+                        "type": "string"
+                    },
+                    "penilaianBiaya": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "penilaianKuantitas": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "penilaianWaktu": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "nilaiTotal": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "status": {
+                        "type": "string",
+                        "enum": [
+                            "RATED",
+                            "UNRATED"
+                        ]
+                    },
+                    "idUkm": {
+                        "type": "string"
+                    }
+                }
+            },
+            "PasswordChangeRequest": {
+                "type": "object",
+                "properties": {
+                    "oldPassword": {
+                        "type": "string"
+                    },
+                    "newPassword": {
+                        "type": "string"
+                    }
+                }
+            },
+            "CekKegiatanRequest": {
+                "required": [
+                    "idKegiatan"
+                ],
+                "type": "object",
+                "properties": {
+                    "idKegiatan": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "Link": {
+                "type": "object",
+                "properties": {
+                    "href": {
+                        "type": "string"
+                    },
+                    "hreflang": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "deprecation": {
+                        "type": "string"
+                    },
+                    "profile": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "templated": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    }
+}
